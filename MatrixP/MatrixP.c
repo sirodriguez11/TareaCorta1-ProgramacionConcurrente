@@ -10,7 +10,6 @@
 #include <sys/wait.h>
 
 #define MAP_ANONYMOUS 0x20
-#define N 1000
 
 /* Función requerida para crear un espacio de memoria compartida
    entre los procesos. */
@@ -31,6 +30,7 @@ int unlink_cb(const char *fpath, const struct stat *sb, int typeflag,
 
 int main() {
 
+    int N;
     char *filename = malloc(10);
     char *stats_filename = "Stats";
     char iteration[2];
@@ -41,6 +41,10 @@ int main() {
     FILE* output_file;
     FILE* stats_file;
     int i, cell;
+
+    printf("Ingrese el valor de N para la matriz: ");
+    scanf("%d",&N);
+
     int pids[N];
     struct stat sb;
     size_t matrix_size = sizeof(int)*N*N;
